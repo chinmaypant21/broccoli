@@ -1,0 +1,31 @@
+html, body{
+    margin: unset;
+}
+
+#board-container{
+    display: grid;
+    height: 100vh;
+    aspect-ratio: 1;
+    grid-template-columns: repeat(8,1fr);
+}
+
+.board-cell{
+    color:darkcyan;
+    /* aspect-ratio: 1; */
+}
+
+.board-cell:hover{
+    background-color: lightblue;
+}
+
+.board-cell-white{
+    background-color: white;
+}
+
+.board-cell-dark{
+    background-color: black;
+}
+
+.board-highlight-cell{
+    background-color: darkblue;
+}
