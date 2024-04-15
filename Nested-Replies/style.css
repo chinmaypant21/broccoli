@@ -1,0 +1,29 @@
+html, body{
+    margin: unset;
+}
+
+.reply-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.reply-body{
+    display: flex;
+    flex-direction: column;
+    padding-block: 0.2rem;
+}
+
+.text-msg{
+    font-size: 1rem;
+}
+
+.reply-btn{
+    all: unset;
+    cursor: pointer;
+    color: rgb(46, 149, 184);
+    font-size: 0.6rem;
+}
+
+.reply-btn:hover{
+    color: blue;
+}
