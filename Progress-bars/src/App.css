@@ -1,0 +1,28 @@
+body {
+  font-family: sans-serif;
+}
+
+.buttons {
+  display: flex;
+  column-gap: 8px;
+}
+
+.bar-container{
+  display: flex;
+  flex-direction: column;
+  padding-block: 10px;
+  gap: 8px;
+}
+
+.progressbar{
+  height: 10px;
+  width: 100%;
+  background-color: gainsboro;
+  position: relative;
+}
+
+.progressbar .progress{
+  position: absolute;
+  height: 100%;
+  background-color: green;
+}
