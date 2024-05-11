@@ -1,0 +1,23 @@
+.folder-container{
+    /* display: flex; */
+    /* flex-direction: column; */
+}
+
+.folder-title{
+    display: inline-flex;
+    background-color: beige;
+    gap: 10px;
+}
+
+.btn-container{
+    display: flex;
+    gap: 2px;
+}
+
+.folder-open.folder-title{
+    border: 1px solid blue;
+}
+
+.folder-content{
+    margin-left: 1em;    
+}
