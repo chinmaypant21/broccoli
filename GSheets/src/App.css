@@ -1,0 +1,64 @@
+.sheet-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.sheet-row{
+  display: flex;
+  width: fit-content;
+}
+
+.sheet-header-row{
+  display: flex;
+  width: fit-content;
+}
+
+.row-idx{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  padding-inline: 10px;
+  border: 1px solid rgb(185, 185, 185);
+  background-color: antiquewhite;
+}
+
+.sheet-header-row > div, .sheet-cell{
+  width: 90px;
+  height: 20px;
+  border: 1px solid rgb(185, 185, 185);
+  display: flex;
+  padding: 2px;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+}
+
+.sheet-header-row > div{
+  outline: 1px solid rgba(80, 80, 80, 0.789);
+  justify-content: center;
+  font-weight: 600;
+}
+
+.sheet-cell:focus-within{
+  position: relative;
+  z-index: 1;
+  outline: 1px solid rgb(19, 88, 200);
+  border: 1px solid rgb(19, 88, 200);
+}
+
+.sheet-cell input{
+  border: none;
+  outline: none;
+  width: 100%;
+  pointer-events: none;
+  background-color: transparent;
+}
+
+.cell-input-active{
+  pointer-events: all;
+}
+
+.cell-colored{
+  background-color: red;
+}
