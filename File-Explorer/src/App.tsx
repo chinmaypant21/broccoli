@@ -1,43 +1,58 @@
-import { KeyboardEvent, useEffect, useRef, useState } from 'react'
+import { Fragment, KeyboardEvent, useEffect, useRef, useState } from 'react'
 import './App.css'
 
+let counter = 100;
+
+function generateId(){
+  return ++counter;
+}
+
 type StructureType = {
+  id: any,
   type: 'file' | 'folder',
   name: string,
   children? : Array<StructureType>
 }
 
 const structureData: StructureType = {
+  id: 1,
   type: 'folder',
   name: 'MainFolder',
   children: [
     {
+      id: 2,
       type: 'file',
       name: 'script.js'
     },
     {
+      id: 3,
       type: 'file',
       name: 'index.html'
     },
     {
+      id: 6,
       type: 'folder',
       name: 'Assets Folder',
       children: [
         {
+          id: 4,
           type: 'file',
           name: 'style.css'
         },
         {
+          id: 5,
           type: 'file',
           name: 'logo.jpeg'
         }
       ]
     },
     {
+      id: 7,
       type: 'folder',
       name: 'lib',
       children: [
         {
+          id: 8,
           type: 'file',
           name: 'lib.xml'
         },
@@ -48,42 +63,54 @@ const structureData: StructureType = {
 
 function App() {
   const [structure, setStructure] = useState<StructureType>(structureData);
-  const [updatedStructure, setUpdatedStructure] = useState<StructureType | null>(null);
-
-  useEffect(() => {
-    if(updatedStructure){
-      setStructure(updatedStructure)
-    }
-  },[updatedStructure])
 
   return (
     <div>
-      <Folder data={structure} updateStructure={setUpdatedStructure} />
+      <Folder data={structure} setStructure={setStructure} />
     </div>
   )
 }
 
-function Folder({data, updateStructure}: {data: StructureType, updateStructure: any}){
+function Folder({data, setStructure}: {data: StructureType, setStructure: any}){
   const [isOpen, setIsOpen] = useState(false);
-  const [addNew, setAddNew] = useState(false);
+  const [addNew, setAddNew] = useState<any>();
 
   const inputRef = useRef<any>(null);
+
+  function updateStructureCallback(newStructure: StructureType){
+    const str = structuredClone(data);
+
+    str.children = str.children?.map(childStructure => {
+      return (newStructure.id === childStructure.id) ? newStructure : childStructure;
+    })
+
+    setStructure(str);
+  }
 
   function handleClick(){
     setIsOpen(prev => !prev)
   }
 
   function addFolder(){
-
+    setAddNew('folder')
   }
 
   function addFile(){
-    setAddNew(true)
+    setAddNew('file')
   }
-
+  
   function handleEnterInput(e: KeyboardEvent<HTMLInputElement>){
     if(e.key === 'Enter'){
-      setAddNew(false)
+      let str = structuredClone(data)
+      
+      const newData: any = {id: generateId(), type: addNew, name: inputRef.current.value}
+      if(addNew === 'folder'){
+        newData.children = []
+      }
+
+      str.children?.push(newData)
+      setStructure(str);
+      setAddNew('')
     }
   }
 
@@ -125,9 +152,13 @@ function Folder({data, updateStructure}: {data: StructureType, updateStructure: 
       <div className='folder-content'>
       {
         isOpen && data.children?.map(element => (
-          (element.type === 'file') 
-          ? <File title={element.name}/>
-          : <Folder data={element} />
+          <Fragment key={element.id}>
+          {
+            (element.type === 'file') 
+            ? <File title={element.name}/>
+            : <Folder data={element} setStructure={updateStructureCallback} />
+          }
+          </Fragment>
         ))
       }
       </div>
