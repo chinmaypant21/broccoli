@@ -5,6 +5,7 @@ const ROWS = 10
 const COLS = 15
 
 function calculateMatrix(start, end){
+  console.log(start, end)
   let initial = start;
   let final = end;
 
@@ -41,11 +42,18 @@ function App() {
     setTargetedCells(calculateMatrix(borderCells.starting, borderCells.ending))
   }, [borderCells])
 
+  function handleMouseUp(e){
+    setIsSelecting(false)
+  }
+
   return (
     <>
+    {JSON.stringify(isSelecting)}
     <div
       style={{gridTemplateRows: `repeat(${ROWS}, 1fr)`, gridTemplateColumns: `repeat(${COLS}, 80px)`}}
       className='grid-container'
+      onMouseUp={handleMouseUp}
+      onMouseDown={handleMouseDown}
     >
       {
         Array(ROWS).fill().map((_, row_idx) => (
@@ -69,20 +77,16 @@ function App() {
   )
 }
 
-function GridCell({ idx_value, position, borderCells, setBorderCells, targetedCells, isSelecting, setIsSelecting }) {
+function GridCell({ idx_value, position, borderCells, setIsSelecting, setBorderCells, targetedCells, isSelecting }) {
   function handleMouseDown(e){
     setIsSelecting(true)
     setBorderCells({starting: position, ending: position})
   }
 
   function handleMouseOver(e){
-    if(borderCells.starting && isSelecting){
+    if(isSelecting){
       setBorderCells(prevVal => ({...prevVal, ending: position}))
     }
-  }
-
-  function handleMouseUp(e){
-    setIsSelecting(false)
   }
 
   return (
@@ -90,7 +94,6 @@ function GridCell({ idx_value, position, borderCells, setBorderCells, targetedCe
       style={targetedCells.some(cell => {return JSON.stringify(cell) === JSON.stringify(position)}) ? {backgroundColor: 'lightcoral'} : {}}
       className='grid-cell'
       onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
       onMouseOver={handleMouseOver}
     >
       {idx_value}
