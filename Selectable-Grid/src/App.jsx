@@ -53,7 +53,6 @@ function App() {
       style={{gridTemplateRows: `repeat(${ROWS}, 1fr)`, gridTemplateColumns: `repeat(${COLS}, 80px)`}}
       className='grid-container'
       onMouseUp={handleMouseUp}
-      onMouseDown={handleMouseDown}
     >
       {
         Array(ROWS).fill().map((_, row_idx) => (
@@ -94,6 +93,7 @@ function GridCell({ idx_value, position, borderCells, setIsSelecting, setBorderC
       style={targetedCells.some(cell => {return JSON.stringify(cell) === JSON.stringify(position)}) ? {backgroundColor: 'lightcoral'} : {}}
       className='grid-cell'
       onMouseDown={handleMouseDown}
+
       onMouseOver={handleMouseOver}
     >
       {idx_value}
