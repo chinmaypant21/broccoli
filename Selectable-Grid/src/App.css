@@ -1,0 +1,20 @@
+.grid-container{
+  display: grid;
+  gap: 5px;
+}
+
+.grid-cell{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  aspect-ratio: 1;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: gainsboro;
+  user-select: none;
+}
+
+.grid-cell:hover{
+  background-color:rgba(30, 143, 255, 0.089);
+}
