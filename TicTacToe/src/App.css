@@ -1,0 +1,21 @@
+.board{
+  width: 500px;
+  display: grid;
+  grid-template-columns: repeat(var(--size), 1fr);
+  /* grid-template-rows: repeat(var(--size), 1fr); */
+  border: 1px solid gray;
+  background-color: rgb(170, 189, 206);
+}
+
+.cell{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  border: 1px solid gray;
+  aspect-ratio: 1;
+}
+
+.cell-filled{
+  background-color: aliceblue;
+}
