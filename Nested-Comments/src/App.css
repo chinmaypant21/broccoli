@@ -1,0 +1,27 @@
+.comment-section{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.comment-body{
+  display: flex;
+  flex-direction: column;
+  background-color: aliceblue;
+  padding: 5px;
+}
+
+.comment-tools-container{
+  display: flex;
+  gap: 5px;
+}
+
+.comment-tools-container .comment-reply-btn{
+  color: cornflowerblue;
+  font-weight: 600;
+  size: 0.6em;
+}
+
+.reply-container{
+  padding-left: 1em;
+}
