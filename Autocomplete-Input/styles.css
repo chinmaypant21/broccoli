@@ -1,0 +1,31 @@
+.autocomplete-container{
+    display: inline-flex;
+    flex-direction: column;
+    padding: 50px;
+    gap: 2px;
+}
+
+#autocomplete-input{
+    height: 30px;
+    width: 250px;
+    font-size: 20px;
+}
+
+#autocomplete-options{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border: 1px solid #000;
+
+    .option:hover{
+        background-color:aliceblue;
+    }
+
+    .option-focused{
+        background-color: aquamarine;
+    }
+}
+
+.hide-element{
+    display: none !important;
+}
