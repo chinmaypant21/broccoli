@@ -1,0 +1,73 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.chart-container{
+  display: flex;
+  gap: 3%;
+  align-items: end;
+  position: relative;
+  height: 400px;
+  width: 90%;
+  left: 40px;
+  /* min-width: 50px; */
+  border-left: 1px solid slategrey;
+  border-bottom: 1px solid slategrey;
+}
+
+.chart-container::before{
+  content: 'Number of Tickets';
+  position: absolute;
+  left: -85px;
+  bottom: 50%;
+  transform: rotate(-90deg);
+}
+
+.chart-container::after{
+  content: 'Departments';
+  position: absolute;
+  left: 50%;
+  bottom: -25px;
+}
+
+/* Chart Column */
+.column{
+  position: relative;
+  height: var(--height);
+  background-color: var(--color);
+  animation: fill 0.4s linear forwards;
+  width: 8%;
+}
+
+@keyframes fill {
+  0%{
+    height: 0%;
+  }
+
+  100%{
+    height: var(--height);
+  }
+}
+
+.column:hover .tooltip{
+  display: block;
+}
+
+.tooltip{
+  display: none;
+  position: absolute;
+  width: max-content;
+  /* white-space: nowrap; */
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: antiquewhite;
+  color: slategray;
+  border-radius: 6px;
+  padding: 2px;
+  font-size: 0.8em;
+  z-index: 2;
+}
