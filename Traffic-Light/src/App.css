@@ -1,0 +1,15 @@
+.signal-container{
+  background-color:black;
+  padding: 20px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 10px;
+}
+
+.light-container{
+  height: 100px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: grey;
+}
